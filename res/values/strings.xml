@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    	<string name="hello">MagicTower</string>
+    	<string name="app_name">MagicTest </string>	
+	<string name="about">MagicTower,谢谢使用！</string>
+	<string name="help">方向键可以行走，遇到怪物会自动攻击，如果无法赢得战斗，就不会进行攻击,游戏中会遇到很多宝物，而且有其使用说明和介绍。</string>
+</resources>
