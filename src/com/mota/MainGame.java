@@ -53,34 +53,40 @@ public class MainGame
 	//控制显示什么界面
 	public void controlView(int status)
 	{
-		if(m_status != status)
+		if(status == yarin.GAME_ABOUT)
+			m_MagicTower.dialog();
+		else
 		{
-			if(m_GameView != null)
+			if(m_status != status)
 			{
-				m_GameView.reCycle();
-				System.gc();				
+				if(m_GameView != null)
+				{
+					m_GameView.reCycle();
+					System.gc();				
+				}
 			}
+			freeGameView(m_GameView);
+			switch (status)
+			{
+				case yarin.GAME_SPLASH:
+					m_GameView = new SplashScreen(m_Context,this);
+					break;
+				case yarin.GAME_MENU:
+					m_GameView = new MainMenu(m_Context,this);
+					break;
+				case yarin.GAME_RUN:
+					m_GameView = new GameScreen(m_Context,m_MagicTower,this,true);
+					break;
+				case yarin.GAME_CONTINUE:
+					m_GameView = new GameScreen(m_Context,m_MagicTower,this,false);
+					break;
+				case yarin.GAME_HERO:
+					m_GameView = new SelectHero(m_Context,this);
+					break;
+			}
+			setStatus(status);
 		}
-		freeGameView(m_GameView);
-		switch (status)
-		{
-			case yarin.GAME_SPLASH:
-				m_GameView = new SplashScreen(m_Context,this);
-				break;
-			case yarin.GAME_MENU:
-				m_GameView = new MainMenu(m_Context,this);
-				break;
-			case yarin.GAME_RUN:
-				m_GameView = new GameScreen(m_Context,m_MagicTower,this,true);
-				break;
-			case yarin.GAME_CONTINUE:
-				m_GameView = new GameScreen(m_Context,m_MagicTower,this,false);
-				break;
-			case yarin.GAME_HERO:
-				m_GameView = new SelectHero(m_Context,this);
-				break;
-		}
-		setStatus(status);
+		
 	}
 	
 	//释放界面对象

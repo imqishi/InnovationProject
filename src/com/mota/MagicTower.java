@@ -1,6 +1,10 @@
 package com.mota;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
@@ -488,6 +492,19 @@ public class MagicTower extends Activity
 				Toast.makeText(this, "不可使用的物品！", Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	protected void dialog() {
+		AlertDialog.Builder builder = new Builder(MagicTower.this);
+		builder.setMessage("Powered by Hammer-Ray Studio(锤雷工作室) 剧本：付怡  开发：齐实  杜乐根  美工：李映志  齐昊姝");
+		builder.setTitle("Magic Test");
+		
+		builder.setNegativeButton("OK", new OnClickListener() {
+		    public void onClick(DialogInterface dialog, int which) {
+			    dialog.dismiss();
+		    }
+	    });
+	    builder.create().show();
+    }
 }
 
 

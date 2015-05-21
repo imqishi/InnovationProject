@@ -128,6 +128,15 @@ public class Report extends Activity{
 				api.sendReq(req);
 			}	
 		});
+        
+        Button button1 = (Button)findViewById(R.id.button2);
+        button1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				android.os.Process.killProcess(android.os.Process.myPid());
+			}
+		});
    		
 	}
 	

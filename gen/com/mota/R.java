@@ -101,6 +101,7 @@ public final class R {
     public static final class id {
         public static final int RelativeLayout_Item=0x7f070003;
         public static final int button1=0x7f070006;
+        public static final int button2=0x7f070007;
         public static final int gridview=0x7f070000;
         public static final int imageView1=0x7f070002;
         public static final int item_image=0x7f070004;
