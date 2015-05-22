@@ -887,19 +887,23 @@ public class GameScreen extends GameView
 
             if(x2>=yarin.SCREENW / 3 && x2<=120 + yarin.SCREENW / 3 && y2 >=yarin.SCREENH - 200 && y2<=yarin.SCREENH - 80)
             {
-            	if(hero.getpacksum() > 0)
+            	if(! (mshowMessage || mshowDialog))
             	{
-            		isBackpack = true;
-            		return true;
-            	}
-            	else
-            	{
-            		Toast.makeText(mcontext, "背包里什么都没有哦～", Toast.LENGTH_LONG).show();
+            		if(hero.getpacksum() > 0)
+                	{
+                		isBackpack = true;
+                		return true;
+                	}
+                	else
+                	{
+                		Toast.makeText(mcontext, "背包里什么都没有哦～", Toast.LENGTH_LONG).show();
+                	}
             	}
             }
             else if(x2 >= 10 && x2 <= 85 && y2 >= yarin.SCREENH-130  && y2 <= yarin.SCREENH-17)
             {
-            	mshowInfo = true;
+            	if(! (mshowMessage || mshowDialog))
+            		mshowInfo = true;
             	/*
             	if(mMainGame.gender == 1)
             		heroInfor = 1;
@@ -913,176 +917,193 @@ public class GameScreen extends GameView
 			}
             if(x2>=yarin.SCREENW-240 && x2<=yarin.SCREENW-120 && y2>=yarin.SCREENH-360 && y2<=yarin.SCREENH-240)
             {
-            	if(!mazeFlag)
+            	if(! (mshowMessage || mshowDialog))
             	{
-            		if(swap)
-            		{
-            			hero.setFrame(10);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(11);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPass(UP)) == 1 || (type = gameMap.canPass(UP)) == 3 ||
-            			(type = gameMap.canPass(UP)) == 5 ||
-            			(type = gameMap.canPass(UP)) == 99 || (type = gameMap.canPass(UP)) == 154) //MAP_ROAD=1 and 3 and 5
-            		{
-            			hero.move(0, -step);
-            		}
-            	}
-            	else
-            	{
-            		if(swap)
-            		{
-            			hero.setFrame(10);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(11);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPassMaze(UP)) == 1 || (type = gameMap.canPassMaze(UP)) == 3 ||
-            			(type = gameMap.canPassMaze(UP)) == 5  ||(type = gameMap.canPassMaze(UP)) == 83 ||
-            			(type = gameMap.canPassMaze(UP)) == 99 || (type = gameMap.canPassMaze(UP)) == 154)
+            		if(!mazeFlag)
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(10);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(11);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPass(UP)) == 1 || (type = gameMap.canPass(UP)) == 3 ||
+                			(type = gameMap.canPass(UP)) == 5 ||
+                			(type = gameMap.canPass(UP)) == 99 || (type = gameMap.canPass(UP)) == 154) //MAP_ROAD=1 and 3 and 5
+                		{
+                			hero.move(0, -step);
+                		}
+                	}
+                	else
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(10);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(11);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPassMaze(UP)) == 1 || (type = gameMap.canPassMaze(UP)) == 3 ||
+                			(type = gameMap.canPassMaze(UP)) == 5  ||(type = gameMap.canPassMaze(UP)) == 83 ||
+                			(type = gameMap.canPassMaze(UP)) == 99 || (type = gameMap.canPassMaze(UP)) == 154)
 
-            			 //MAP_ROAD=1 and 3 and 5
-            		{
-            			hero.move(0, -step);
-            		}
+                			 //MAP_ROAD=1 and 3 and 5
+                		{
+                			hero.move(0, -step);
+                		}
+                	}
             	}
             }
             else if(x2>=yarin.SCREENW - 240 && x2<=yarin.SCREENW - 120 && y2>=yarin.SCREENH - 120 && y2<=yarin.SCREENH)
             {
-            	if(!mazeFlag)
+            	if(! (mshowMessage || mshowDialog))
             	{
-            		if(swap)
-            		{
-            			hero.setFrame(1);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(2);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPass(DOWN)) == 1 || (type = gameMap.canPass(DOWN)) == 3 ||
-            			(type = gameMap.canPass(DOWN)) == 5 ||
-            			(type = gameMap.canPass(DOWN)) == 99 || (type = gameMap.canPass(DOWN)) == 154)
-            		{
-            			hero.move(0, step);
-            		}
-            	}
-            	else
-            	{
-            		if(swap)
-            		{
-            			hero.setFrame(1);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(2);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPassMaze(DOWN)) == 1 || (type = gameMap.canPassMaze(DOWN)) == 3 ||
-            			(type = gameMap.canPassMaze(DOWN)) == 5 || (type = gameMap.canPassMaze(DOWN)) == 83 ||
-            			(type = gameMap.canPassMaze(DOWN)) == 99 || (type = gameMap.canPassMaze(DOWN)) == 154)
-            		{
-            			hero.move(0, step);
-            		}
+            		if(!mazeFlag)
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(1);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(2);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPass(DOWN)) == 1 || (type = gameMap.canPass(DOWN)) == 3 ||
+                			(type = gameMap.canPass(DOWN)) == 5 ||
+                			(type = gameMap.canPass(DOWN)) == 99 || (type = gameMap.canPass(DOWN)) == 154)
+                		{
+                			hero.move(0, step);
+                		}
+                	}
+                	else
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(1);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(2);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPassMaze(DOWN)) == 1 || (type = gameMap.canPassMaze(DOWN)) == 3 ||
+                			(type = gameMap.canPassMaze(DOWN)) == 5 || (type = gameMap.canPassMaze(DOWN)) == 83 ||
+                			(type = gameMap.canPassMaze(DOWN)) == 99 || (type = gameMap.canPassMaze(DOWN)) == 154)
+                		{
+                			hero.move(0, step);
+                		}
+                	}
             	}
             }
             else if(x2>=yarin.SCREENW-360 && x2<=yarin.SCREENW-240 && y2>=yarin.SCREENH-240 && y2<=yarin.SCREENH-120)
             {
-            	if(!mazeFlag)
+            	if(! (mshowMessage || mshowDialog))
             	{
-            		if(swap)
-            		{
-            			hero.setFrame(4);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(5);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPass(LEFT)) == 1 || (type = gameMap.canPass(LEFT)) == 3 ||
-            			(type = gameMap.canPass(LEFT)) == 5 ||
-            			(type = gameMap.canPass(LEFT)) == 99 || (type = gameMap.canPass(LEFT)) == 154)
-            		{
-            			hero.move(-step, 0);
-            		}
-            	}
-            	else
-            	{
-            		if(swap)
-            		{
-            			hero.setFrame(4);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(5);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPassMaze(LEFT)) == 1 || (type = gameMap.canPassMaze(LEFT)) == 3 ||
-            			(type = gameMap.canPassMaze(LEFT)) == 5 || (type = gameMap.canPassMaze(LEFT)) == 83 ||
-            			(type = gameMap.canPassMaze(LEFT)) == 99 || (type = gameMap.canPassMaze(LEFT)) == 154)
-            		{
-            			hero.move(-step, 0);
-            		}
+            		if(!mazeFlag)
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(4);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(5);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPass(LEFT)) == 1 || (type = gameMap.canPass(LEFT)) == 3 ||
+                			(type = gameMap.canPass(LEFT)) == 5 ||
+                			(type = gameMap.canPass(LEFT)) == 99 || (type = gameMap.canPass(LEFT)) == 154)
+                		{
+                			hero.move(-step, 0);
+                		}
+                	}
+                	else
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(4);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(5);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPassMaze(LEFT)) == 1 || (type = gameMap.canPassMaze(LEFT)) == 3 ||
+                			(type = gameMap.canPassMaze(LEFT)) == 5 || (type = gameMap.canPassMaze(LEFT)) == 83 ||
+                			(type = gameMap.canPassMaze(LEFT)) == 99 || (type = gameMap.canPassMaze(LEFT)) == 154)
+                		{
+                			hero.move(-step, 0);
+                		}
+                	}
             	}
             }
             else if(x2>=yarin.SCREENW-120 && x2<=yarin.SCREENW && y2>=yarin.SCREENH-240 && y2<=yarin.SCREENH-120)
             {
-            	if(!mazeFlag)
+            	if(! (mshowMessage || mshowDialog))
             	{
-            		if(swap)
-            		{
-            			hero.setFrame(7);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(8);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPass(RIGHT)) == 1 || (type = gameMap.canPass(RIGHT)) == 3 ||
-            			(type = gameMap.canPass(RIGHT)) == 5 ||
-            			(type = gameMap.canPass(RIGHT)) == 99 || (type = gameMap.canPass(RIGHT)) == 154)
-            		{
-            			hero.move(step, 0);
-            		}
+            		if(!mazeFlag)
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(7);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(8);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPass(RIGHT)) == 1 || (type = gameMap.canPass(RIGHT)) == 3 ||
+                			(type = gameMap.canPass(RIGHT)) == 5 ||
+                			(type = gameMap.canPass(RIGHT)) == 99 || (type = gameMap.canPass(RIGHT)) == 154)
+                		{
+                			hero.move(step, 0);
+                		}
+                	}
+                	else
+                	{
+                		if(swap)
+                		{
+                			hero.setFrame(7);
+                			swap = !swap;
+                		}
+                		else
+                		{
+                			hero.setFrame(8);
+                			swap = !swap;
+                		}
+                		if ((type = gameMap.canPassMaze(RIGHT)) == 1 || (type = gameMap.canPassMaze(RIGHT)) == 3 ||
+                			(type = gameMap.canPassMaze(RIGHT)) == 5 || (type = gameMap.canPassMaze(RIGHT)) == 83 ||
+                			(type = gameMap.canPassMaze(RIGHT)) == 99 || (type = gameMap.canPassMaze(RIGHT)) == 154)
+                		{
+                			hero.move(step, 0);
+                		}
+                	}
             	}
-            	else
-            	{
-            		if(swap)
-            		{
-            			hero.setFrame(7);
-            			swap = !swap;
-            		}
-            		else
-            		{
-            			hero.setFrame(8);
-            			swap = !swap;
-            		}
-            		if ((type = gameMap.canPassMaze(RIGHT)) == 1 || (type = gameMap.canPassMaze(RIGHT)) == 3 ||
-            			(type = gameMap.canPassMaze(RIGHT)) == 5 || (type = gameMap.canPassMaze(RIGHT)) == 83 ||
-            			(type = gameMap.canPassMaze(RIGHT)) == 99 || (type = gameMap.canPassMaze(RIGHT)) == 154)
-            		{
-            			hero.move(step, 0);
-            		}
-            	}
+            	
+            }
+            else
+            {
+            	if(mshowMessage)
+            		mshowMessage = false;
+            	if(mshowDialog)
+            		mshowDialog = false;
             }
         }
-
-        if(mshowMessage)
-			mshowMessage = false;
-        if(mshowDialog)
-        	mshowDialog = false;
+        
+        
         if (type >= GameMap.MAP_BED1)
 			dealType(type);
         return false;

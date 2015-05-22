@@ -105,7 +105,7 @@ public class Report extends Activity{
         
         getBun();
         
-        Button button = (Button)findViewById(R.id.button1);
+        Button button = (Button)findViewById(R.id.button2);
         button.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -129,7 +129,7 @@ public class Report extends Activity{
 			}	
 		});
         
-        Button button1 = (Button)findViewById(R.id.button2);
+        Button button1 = (Button)findViewById(R.id.button1);
         button1.setOnClickListener(new OnClickListener() {
 			
 			@Override
